@@ -1,0 +1,78 @@
+type TodoItem = 
+ record {
+   category: TodoCategory;
+   completed: bool;
+   created: int;
+   dueDate: opt int;
+   title: text;
+   todoId: nat;
+ };
+type TodoInput = 
+ record {
+   category: TodoCategory;
+   dueDate: opt int;
+   title: text;
+   user: principal;
+ };
+type TodoCategory = 
+ variant {
+   personal;
+   work;
+ };
+type NoteInput = 
+ record {
+   body: text;
+   title: text;
+   user: principal;
+ };
+type Note = 
+ record {
+   body: text;
+   created: int;
+   id: nat;
+   title: text;
+   updated: int;
+ };
+type HabitCompletionInput = 
+ record {
+   date: text;
+   habitId: nat;
+   user: principal;
+ };
+type HabitCompletion = 
+ record {
+   date: text;
+   habitId: nat;
+ };
+type Habit = 
+ record {
+   id: nat;
+   name: text;
+ };
+type DailyGoalInput = 
+ record {
+   date: text;
+   title: text;
+   user: principal;
+ };
+type DailyGoal = 
+ record {
+   completed: bool;
+   date: text;
+   id: nat;
+   title: text;
+ };
+service : {
+  createDailyGoal: (input: DailyGoalInput) -> (DailyGoal);
+  createHabit: (name: text) -> (Habit);
+  createHabitCompletion: (input: HabitCompletionInput) -> (HabitCompletion);
+  createNote: (input: NoteInput) -> (Note);
+  createTodo: (input: TodoInput) -> (TodoItem);
+  deleteHabit: (id: nat) -> (bool);
+  deleteNote: (id: nat) -> (bool);
+  deleteTodo: (id: nat) -> (bool);
+  getAllGoals: () -> (vec DailyGoal) query;
+  getAllTodos: () -> (vec TodoItem);
+  isRegistered: (user: principal) -> (bool) query;
+  markTodoComplete: (id: nat) -> ();
+}

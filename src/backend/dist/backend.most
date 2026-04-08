@@ -1,0 +1,58 @@
+// Version: 1.0.0
+type DailyGoal__374917103 =
+  {completed : Bool; date : Text; id : Nat; title : Text};
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type HabitCompletion__468292731 = {date : Text; habitId : Nat};
+type Habit__1015246288 = {id : Nat; name : Text};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Note__74666102 =
+  {body : Text; created : Int; id : Nat; title : Text; updated : Int};
+type TodoCategory__1029092825 = {#personal; #work};
+type TodoItem__953182797 =
+  {
+    category : TodoCategory__1029092825;
+    completed : Bool;
+    created : Int;
+    dueDate : ?Int;
+    title : Text;
+    todoId : Nat
+  };
+actor {
+  stable completionMap :
+    {
+      var root : Node__46230540<Nat, HabitCompletion__468292731>;
+      var size : Nat__490723111
+    };
+  stable goalMap :
+    {
+      var root : Node__46230540<Nat, DailyGoal__374917103>;
+      var size : Nat__490723111
+    };
+  stable habitMap :
+    {
+      var root : Node__46230540<Nat, Habit__1015246288>;
+      var size : Nat__490723111
+    };
+  stable var nextCompletionId : Nat;
+  stable var nextGoalId : Nat;
+  stable var nextHabitId : Nat;
+  stable var nextNoteId : Nat;
+  stable var nextTodoId : Nat;
+  stable noteMap :
+    {
+      var root : Node__46230540<Nat, Note__74666102>;
+      var size : Nat__490723111
+    };
+  stable todoMap :
+    {
+      var root : Node__46230540<Nat, TodoItem__953182797>;
+      var size : Nat__490723111
+    }
+};

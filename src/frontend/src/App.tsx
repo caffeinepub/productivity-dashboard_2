@@ -47,7 +47,7 @@ export default function App() {
           isAuthenticated={isAuthenticated}
           onLogin={login}
           onLogout={clear}
-          userName="Sarah J."
+          userName="Khushi"
         />
 
         <main className="flex-1 p-6" data-ocid="dashboard.page">
@@ -58,7 +58,7 @@ export default function App() {
             className="mb-6"
           >
             <h1 className="text-3xl font-bold tracking-tight">
-              {greeting}, <span className="text-cyan">Sarah!</span>
+              {greeting}, <span className="text-cyan">Khushi!</span>
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
               {new Date().toLocaleDateString("en-US", {
